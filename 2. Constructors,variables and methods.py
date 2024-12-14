@@ -1,5 +1,6 @@
 class subject:
-    ''' No constructor overloading possible, multipel constructors can present, but only the last constructor will be considered by the PVM '''
+    ''' In python, if u did not provide constructor to a class, since there is no need of creation of objects in that class, Python provides a default constructor that takes no arguments and does nothing.
+    No constructor overloading possible in Python, multipel constructors can present, but only the last constructor will be considered by the PVM '''
     x = 10
     y = 201
 

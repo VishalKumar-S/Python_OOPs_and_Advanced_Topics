@@ -2,7 +2,7 @@ class difference:
     '''Instance methods are costlier than class methods, since self ref., variable is passed. So, do not use instance methods, if u do not have any instance var., isntead go for static variables'''
 
     def static_method(x,y):
-        print("Static varaibles are not related to staic methods, static variables are used in class-methods as class-level variables, static methods are general utility methods or helper methpds")
+        print("Static varaibles are not related to staic methods, static variables are used in class-methods as class-level variables, static methods are general utility methods or helper methpds. We will not use any class/static variables and instance variables in static methods")
         print(x+y)  
     
 
