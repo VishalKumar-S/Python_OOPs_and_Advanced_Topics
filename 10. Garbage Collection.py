@@ -66,7 +66,7 @@ t1 = Garbage_Collection()
 t1 = None
 time.sleep(3)
 print("I'm the last line of this program, after i printed, the program will now get terminated")
-print("Here, even after being disabling the garabge collector, still the object,whose ref., we marked as None here gets destructed, becuase , in theroy, gc.disable shoudl dsiable teh gabage collector. But in reality, the wroking of gabrage colelctor varies from paltofrm to paltofrm,so only the platofrm,w=inwhcih we wrok,willd ecied whether todisabelt eh gabage colelctor or not")
+print("Here, even after being disabling the garabge collector, still the object,whose ref., we marked as None here gets destructed, becuase , in theroy, gc.disable shoudl dsiable teh gabage collector. But in reality, the wroking of gabrage colelctor varies from paltofrm to paltofrm,so only the platofrm,w=inwhcih we wrok,willd ecied whether todisabelt eh gabage colelctor or not. It may ahppend or may not happen")
 
 
 print("Case 4: ")
@@ -74,7 +74,7 @@ gc.disable()
 t1 = Garbage_Collection()
 time.sleep(3)
 print("I'm the last line of this program, after i printed, the program will now get terminated")
-print("Here, even after being disabling the garabge collector, still the object gets destructed, even we didnt delete teh ref., to it, becuase , in theroy, gc.disable shoudl dsiable teh gabage collector. But in reality, the wroking of gabrage colelctor varies from paltofrm to paltofrm,so only the platofrm,w=inwhcih we wrok,willd ecied whether todisabelt eh gabage colelctor or not")
+print("Here, even after being disabling the garabge collector, still the object gets destructed, even we didnt delete teh ref., to it, becuase , in theroy, gc.disable shoudl dsiable teh gabage collector. But in reality, the wroking of gabrage colelctor varies from paltofrm to paltofrm,so only the platofrm,w=inwhcih we wrok,willd ecied whether todisabelt eh gabage colelctor or not. It may ahppend or may not happen")
 
 
 print("Case 5: ")
