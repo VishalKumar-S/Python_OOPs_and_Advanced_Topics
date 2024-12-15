@@ -3,8 +3,9 @@ class SECE:
     def __init__(self,funds,expenses):
         self.total_funds = funds
         self.total_expenses = expenses
-        self.contact_details = self.contact_us()
-    
+        self.current_director = "Shri.R.Rajaram"
+        self.contact_details = self.contact_us(self.current_director)
+
 
     def financial_status(self):
         print(f"Funds availabe: {self.total_funds}, Expenses: {self.total_expenses}")
@@ -45,7 +46,7 @@ class SECE:
             self.course_count+=1
 
         class Courses_offered:
-            ''' This (Courses_offered) is an nested class here. Here,we can udnerstand teh improtnae of inner classes. i.e if we didnt use any inner classes, then in the outer class SECE itself, we will be forced to have all teh attributes like funds, expenses, dept name,s tudents, faculty count, course credits, code, faculty handled,whihc oworudlnto eb nice., Having inner classes, ameks it better. i.e for e.g, If we need to have  a detasl about a person adn his DOB details, liek dd,mm,yyyy instaead of ahvinga ll teh person relted attribteus, as welll as the  attibutes mm,dd,yy in teh consturctor of eprson class itslef, have all the eprson realted attirbtues, create  inner class DOB , initlaise dd,mm,yyyy ihitn it,adn inteh otuer Person class, call teh DOB inner class, as a instance variable liek e.g, self.dob = self.DOB()'''
+            ''' This (Courses_offered) is an nested class here. Here,we can udnerstand teh improtnae of inner classes. i.e if we didnt use any inner classes, then in the outer class SECE itself, we will be forced to have all teh attributes like funds, expenses, dept name,s tudents, faculty count, course credits, code, faculty handled,whihc oworudlnto eb nice., Having inner classes, ameks it better. i.e for e.g, If we need to have  a details about a person ,which also includes his DOB details as dd,mm,yyyy. We'll have the DOB as inner class, the reasons are - since DOB can't exist, if a person does not exist. The next reason is, DOB consists of  3 attributes dd,mm,yyyy. Instaead of having all these attributes along with other person related  attribteus, in teh consturctor of Person outer class itslef, have all the Person realted attirbtues in the outer class as it  is, create  inner class DOB , initialise dd,mm,yyyy ihitn it,adn inteh otuer Person class, call teh DOB inner class, as a instance variable liek e.g, self.dob = self.DOB()'''
 
             def __init__(self,course_code,credits,course_name, outer_instance):
                 self.course_code = course_code
@@ -57,19 +58,59 @@ class SECE:
             def update_course_details(self):
                 print("Here, we access the outer class., method by creating a instance varibale,which points the ref., variable of the outer Class")
                 self.access_dept.add_courses(self.course_name)
-  
+            
+            
+    class ControllerOfExaminations:
+        ''' Here, we use nested method insdie a emthod, nested methods,are used ins cenarios,where a specific funcitoanilty within the funciton in needed, repeatabieltiy,so taht if we write tehm out as a nested emthdo,we can reuse them as mcuh we want, instead of writing thema gian and agian, another use case, is when u need to isolate a speerate funciroanlity or logic inside teh funciton, deu to the fact, which is, somehwat nort genralyl used,or any sepfici -use case or funcitaonilty basde, do not want to mix up with the main logic
+        Note: There is no nested methods in Java, there are nested methods only in Python'''
+        @staticmethod
+        def pass_or_fail_calculator():
+            def validate_marks(cia_1, cia_2,cia_3,external,assignments,presentation,quiz):
+                if cia_1<50 and cia_2<50 and cia_3<50:
+                    print("Sorry, u failed,all internal exams, you are not permitted to write the external exams.")
+                    return
+                
+                if external<50:
+                    print("Sorry, u failed, in external exam, you didn't pass the exam.")
+                    return                            
+                
+                cia_1 = cia_1*0.08
+                cia_2 = cia_2*0.08
+                cia_3 = cia_3*0.08
+
+                internal_marks = assignments+presentation+cia_1+cia_2+cia_3+quiz
+                if internal_marks<20:
+                    print("Sorry u do not have the necessary internal marks")
+                    return
+
+                total_marks = internal_marks+external
+                if total_marks>50:
+                    print("Congrats! You passed the exam")
+                else:
+                    print("Sorry, u failed the exam")
+            
+            validate_marks(80,60,90,80,5,5,6)
+            validate_marks(10,50,30,60,4,3,5)
+            validate_marks(90,60,50,70,4,5,6)
+            
+
+
+
+
 
 
 
     class contact_us:
         ''' To call me, from the outer class SECE, they have created an instance of mine (contact us) and used the instance variable (contact_details) to call me, and execute my methods'''
-        def __init__(self):
+        def __init__(self, director_name):
+            self.curr_director = director_name
             self.phone_no = "+91 4259200300"
             self.e_mail = "sece@sece.ac.in"
             self.location = " Kondampatti [Post], Vadasithur (via), Coimbatore – 641 202, Tamil Nadu, India"
             
         def display(self):
             print("##### Contact Us  #####")
+            print("Director Name: ",self.curr_director)
             print("Phone: ",self.phone_no)
             print("e_mail: ",self.e_mail)
             print("Location: ",self.location)
@@ -119,6 +160,10 @@ print(f"Before: AI_DS  Courses: {ai_ds.courses}, Count: {ai_ds.course_count}")
 big_data_analytics_course.update_course_details()
 print(f"After: AI_DS  Courses: {ai_ds.courses}, Count: {ai_ds.course_count}")
 
+pass_or_fail = SECE.ControllerOfExaminations()
+
+print(pass_or_fail.__doc__)
+pass_or_fail.pass_or_fail_calculator()
 
 
 
