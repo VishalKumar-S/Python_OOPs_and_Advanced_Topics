@@ -6,7 +6,7 @@ class Garbage_Collection:
     ''' An object is considered to be useless, when there is no ref., varibale pointing towards it. i.e., it is not possible to access that object. Garbage collection is useful to remove all these useless objects, if there are too much of these useless objects, and thery ar not destroyed, then it leads to memory constraitn issues, wihihcsops further creation of enw objects.
     In languages like C++, both object creation and garbage collection are manual i,e only the programemr, can create teh objcet, as well as destruct teh object when ther eis no eneed of it. But the programmers, mostly don't destuct the unsued or not needed objects, which leads to memory issesu in C++
     Whereas in langauges like Java, Python, we have automatic as well as manual garbage collection as well. So, when an useless object is dounf i.e where no ref., varibel ispoitnign otoawards teh object, the "garabge collector" will  atuomatically dsestuecs teh objects, leads to no emmroy constraitn issues.
-    In python, based on our requirement, we can either enable or disable the garbage collector, which is not possuble in Java, makes python special.
+    In python, based on our requirement, we can either enable or disable the garbage collector, with the help of gc module, which is not possuble in Java, makes python special.
     How do u manually make an object, uselesss such that it will be destroeyd by the garbage collector.
     EIther deletet the reg., var., potingin to teh obejct, or point the ref. var to None
     Eg., s = Garbage_Collection()
@@ -32,6 +32,8 @@ class Garbage_Collection:
     def __del__(self):
         print("The garbage collector, called thed destructor(me) to clean up the resources, so after i execute, teh garbage collector will destruct the object")
     
+
+print(Garbage_Collection.__doc__)
 
 print("Is garbage collection enabled?",gc.isenabled())
 print("Disable the garbage collector... ")
@@ -112,3 +114,4 @@ t2 = t1
 t3 = t2
 t4 = t3
 print("Here, including all the external 4 ref., pointers, exepclitely mentioned by the programmer, adn icnclduong the implicit self ref., variable provided by the PVM, totally we have ",sys.getrefcount(t1),"ref variables")
+print("At last, the program is goign to terminate, im the last line")
