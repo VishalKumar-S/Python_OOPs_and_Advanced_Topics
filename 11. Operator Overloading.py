@@ -1,15 +1,43 @@
 class Polymorphism:
     ''' Polymorphism means one name, but it has different forms'''
     class Overloading:
-        '''Overloading refers to defining multiple functions or operators with the same name, where their parameters differ by type, number, or both. This enables the reuse of same names for different functionalities based on the context and the arguments provided.
+        '''Overloading refers to defining multiple functions or operators with the same name, where their parameters differ by type, number, or both. This enables the reuse of same names for different functionalities based on the context and the arguments provided.'''
 
-        1) Function Overloading:
-        marking_scheme(80,90)
-        marking_scheme(A,B)
-        marking_scheme(80,A,90)
-        Note: Python don't have method overloading, whatevr parameter,types, no of paramteres change for the smae fucntion name, Python will only consider the last method of the same named function. Since, there is no datatype explicit mentioning, overloading was not needed for Python.
-        
-        2)Operator Overloading:
+        class Function_Overloading:
+                '''Function Overloading:
+                marking_scheme(80,90)
+                marking_scheme(A,B)
+                marking_scheme(80,A,90)
+                Note: Python don't have method overloading, whatevr parameter,types, no of paramteres change for the smae fucntion name, Python will only consider the last method of the same named function. Overloading is not required for Python since, there is no datatype explicit mentioning, so need of multiple functions for types is not required. But, when it comes to number of parameters, there might be situations where we need to have different functions of the same,with different number of parameters, for different number of functionality. So, tackle this problem is, Python has 2 solutions:
+                1) Default Arguments
+                        Here, we'll mention all the required parameters as arguments in a single method, and mark it's default value as None. Then use conditional statements, to achieve the required functionality, by seeeing the user's input. 
+                2) Variable Arguments
+                        It is not possible to have all the number of parameters already known or fixed, so use *args as paramter, which means variable arguments, which is a Tuple, with that u can have as much values as parameters, using a single function itself.'''
+
+                def __init__(self,*a):
+                        print("Constructor with any number of arguments from [0,N]")
+
+                
+                def default_Arguments_sum(self, a= None, b = None, c = None):
+                        print("here, we shold not give 0 as argument default value instead of None, since if 0 is the actaul number value, 0nto only means a number,it also means OFF state, 0 could mention , there is no number also.SO, use None only")
+                        if a!=None and b!=None and c!=None:
+                                print("Sum of the  3 numbers = ",a+b+c)
+                        elif a!= None and b!=None:
+                                print("Sum of 2 numbers is",a+b)                
+                        else:
+                                print("Provide atleast 2 numbers to compute")
+                
+                def variable_arguments_sum(self,*a):
+                        total = 0
+                        for no in a:
+                                total+=no
+                        
+                        return total
+
+
+
+        class Operator_Overloading:
+                ''' Operator Overloading:
         It enables to use the same operator for whatever objects we want.
         e.,g    'daily_wage+'kumar' = 'daily_wagekumar'
                 'daily_wage'*3 = 'daily_wagedaily_wagedaily_wage'
@@ -77,9 +105,10 @@ class Polymorphism:
                 __ilshift__(): <<=
                 __irshift__(): >>=       
                 
-                '''
-        class Operator_Overloading:
-                '''Whenver we perform operator overloading, the corresponding magic method is called, e.g, ibject A + object B, it's a bianry operator,s o 2 paramters woudl be there ,then we use __add__(self, other)  Here the self instance variable acts, as the 1st operand, whcih is left to teh '+' operator i.e object A, and the other refers to teh 2nd operand, which is in right side of the '+; operator i.e object B. '''
+
+                
+                
+                Whenver we perform operator overloading, the corresponding magic method is called, e.g, ibject A + object B, it's a bianry operator,s o 2 paramters woudl be there ,then we use __add__(self, other)  Here the self instance variable acts, as the 1st operand, whcih is left to teh '+' operator i.e object A, and the other refers to teh 2nd operand, which is in right side of the '+; operator i.e object B. '''
 
                 def __init__(self,value):
                         self.value = value
@@ -120,9 +149,17 @@ class Polymorphism:
 
 
 p = Polymorphism()
+
 op = p.Overloading()
 print(p.__doc__)
 print(op.__doc__)
+print(op.Function_Overloading.__doc__)
+opf = op.Function_Overloading(5,10,5,5,6013,156,0)
+opf.default_Arguments_sum(1,3)
+opf.default_Arguments_sum(1,3,2)
+print("Var arg ouput",opf.variable_arguments_sum(1,2,3,5,100,6,8,6,3,5))
+print("Var arg ouput",opf.variable_arguments_sum(1,2,3))
+print("Var arg ouput",opf.variable_arguments_sum())
 print(op.Operator_Overloading.__doc__)
 print("You can find all teh avilbe magic emthod,of ur data type uisng, ",dir(int))
 a = op.Operator_Overloading(2)
