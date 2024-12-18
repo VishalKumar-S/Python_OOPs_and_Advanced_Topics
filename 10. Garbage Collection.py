@@ -24,6 +24,7 @@ class Garbage_Collection:
     Destructor __del__() in python is same asthte finalise keyword used in Java
     The PVM, is responsible for calling the Garbage collector. Then, then garbage collector is responsible for calling the destructor,it calls the destructor, for clean up purpeos,tehn finally the object is destroyed.
     The destructor is either expleicitely created by hte user, if the usre did not provide the destuctor explcieilty, like Java, in Python also, have teh OBJECT classs, as the parent of all classes,it ahs an default object destructor,which does nothing. Garbage colelctiro is responsibel for exeuttingthe destuctor atumatically. When explcitely destuctor is privide,it exeuted that, whern it si not provide,it used the parent OBJECT class's desturcrotro,which does not do anything. It;s the same for constructors also. IF wedidnt provide explciit constircutor, PVM wil uses the default constructor in the Parent OBject class, whcih does nothign.
+    
          '''
     
     def __init__(self):
@@ -34,7 +35,7 @@ class Garbage_Collection:
     
 
 print(Garbage_Collection.__doc__)
-
+print("List of attributes, that the default Parent Object Class contains is", dir(object))
 print("Is garbage collection enabled?",gc.isenabled())
 print("Disable the garbage collector... ")
 gc.disable()
