@@ -51,7 +51,7 @@ class C1(P):
         print("I'm child 1")
 
 
-print("### 2. Multi-level Inheritance: 1 parent , 1 child followed at many levels")
+print("### 2. Multi-level Inheritance: Implementing single inheritance at multiple levels")
 s = C1()
 s.c1()
 s.b()
@@ -116,10 +116,10 @@ print("Here, the parent() of child gets printed, since why need to check the met
 
 
 
-print("### 5. Hybrid Inheritance: Has 2/more than 2 types of inheritance combined. It coudl be anything from a single to multiple levels, to single or multople parents, children etc.,")
+print("### 5. Hybrid Inheritance: Has 2/more than 2 different types of inheritance combined. It coudl be anything from a single to multiple levels, to single or multople parents, children etc.,")
 
 
-print("### 6. Cyclic Inheritance: It is not needed for use, so onyl Python don't support it")
+print("### 6. Cyclic Inheritance: It is not needed for use, so most of the programming languages don't support it")
 
 try:
     class A(A):
