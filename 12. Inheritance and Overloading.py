@@ -141,3 +141,5 @@ except Exception as e:
     print("We'll face the error",e,"here, if class A, wants to inherit all the proerpties of class B, ans class B,wants to do the same vice versa, why to have 2 seperate classes, instead have one single class itself, combining both")
 
 
+
+
