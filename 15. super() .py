@@ -2,7 +2,7 @@ class human():
     ''' super() method is to invoke the parent class method, by the child class method, for the purpose of child class. Maina dvantage of using it is COde reusability. Instead of writing the same common code,again and agian in the child class, we can initlaise it in the parent class,adn use super to use it. When the child inherits multiple parents, and all those parents have the same method name, then super will order the MRO algorithm to choose the correct method class. But if u  need to call a specific parent's method, instead fo floowing the MRO order of the method lookup,htere are 2 ways to call specific parent;s method name.
     1. parent_Class_name.method_name(self) 
     2. super__(Class_name, self).method_name() Here it won't call the method of class_name, scine we used super(), it goes the the parent of the class_name adn uses that's method.
-    
+
     When you use super(), you're working with the parent class's methods and class variables, but NOT directly with instance variables. Instance variables are always bound to self.
     '''
 
@@ -66,7 +66,7 @@ class Teacher(human):
         print("Subject: ",self.subject)
         print("Experience: ",self.experience)
         print(f"I can use static/class variables of parent within child, with just using super().I have {super().no_of_hands} hands and {super().no_of_legs} legs")
-        print(f"I have {self.eyes} no of eyes. eyes is an instanve variable in the constructor of the human class. So,to access it we need to have self, can't do with super()")
+        print(f"I have {self.eyes} no of eyes. eyes is an instanve variable in the constructor of the human class. So,in Python to access it we need to have self, can't do with super(). But in Java, we can access the instance variables with just super()")
         try:
             print(super().face_shape)
         except Exception as e:
@@ -130,7 +130,6 @@ class Teacher(human):
         super().class_method()
       
 print(human.__doc__)
-
 try:
     class Student(human,School_members):
         pass
