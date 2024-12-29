@@ -69,7 +69,7 @@ for i in all_lines:
 
 
 print("Instead of explicitelty, writing out f.close() at last, to free up the res., we can use 'with' statemne, that woudl automtically, closes the file,after execution of the bloc is completed")
-with open("kumar.txt",'w') as f2:
+with open("C:/Users/HP/Downloads/College/kumar.txt",'w') as f2:
     print("I am going to copy, all contents of vishal.txt to kumar.txt",f2.write(f.read()))
     print("Do the kumar is closed within the block?",f2.writable())
 
