@@ -1,6 +1,6 @@
 from threading import *
 import time
-print("Multi-tasking: Executing different tasks simultaneously. 2 types: \n 1) Process-based Multi-tasking: Multiple tasks execute simultaneously, where each task is an independent process with it's own memory space. Process-based multi-tasking is the most used concept, at the operating system level.  \n 2) Thread-based Multi-tasking: Multiple tasks execute simultaneously, where each task is an independent part of the same program, and share the same memory space. Thread-based multi-tasking is the most used concept, at the application level.\n A thread is an: \n 1) Independent part of a program \n 2) It is considered as a flow of execution. \n 3) It is a python object \n FOr every thread, independent job is available. Whrever indedependednt jobs are available, multi-threading is best suited,as it provides better performance.\n in generally, every web server contains 60 threads. So, at a time, 60 client requests can be handled by the server simultaneodsuly. But,it can be icnreasesd/decreased, abed on our demand. After client requests completed, thread will be allocated to the next request \n. By default PVM, contains a single thread running, which is the main thread. We can sue threading library to do threading operations. For every thread, PVM assigns a unique identification no")
+print("Multi-tasking: Executing different tasks simultaneously. 2 types: \n 1) Process-based Multi-tasking: Multiple tasks execute simultaneously, where each task is an independent process with it's own memory space. Process-based multi-tasking is the most used concept, at the operating system level.  \n 2) Thread-based Multi-tasking: Multiple tasks execute simultaneously, where each task is an independent part of the same program, and share the same memory space. Thread-based multi-tasking is the most used concept, at the application level.\n A thread is an: \n 1) Independent part of a program \n 2) It is considered as a flow of execution. \n 3) It is a python object \n For every thread, independent job is available. Whrever indedependednt jobs are available, multi-threading is best suited,as it provides better performance.\n in generally, every web server contains 60 threads. So, at a time, 60 client requests can be handled by the server simultaneodsuly. But,it can be icnreasesd/decreased, abed on our demand. After client requests completed, thread will be allocated to the next request \n. By default PVM, contains a single thread running, which is the main thread. We can sue threading library to do threading operations. For every thread, PVM assigns a unique identification no")
 
 print("Current running thread Name",current_thread().name)
 
@@ -169,4 +169,54 @@ marriage = Thread(target = marriage_arrangements)
 final_venue.start()
 invitation.start()
 marriage.start()
-print("here, eventhough the sequentail order is : Venue infalsiation -> Invitaiton printing - > Marriage, since we used multi-threading instead of single threading, we completed all other independednt works of each tasks simultaneously, and each thread, waited only in their crucial dependedncy part, whcih depends on the prev ., sequentail order task for execution, making the overall process faster.")
+print("here, eventhough the sequentail order is : Venue finalisation -> Invitaiton printing - > Marriage, since we used multi-threading instead of single threading, we completed all other independednt works of each tasks simultaneously, and each thread, waited only in their crucial dependedncy part, whcih depends on the prev ., sequentail order task for execution, making the overall process faster.")
+
+
+marriage.join()
+print("\n Daemon Threads: These are background running threads e.,g garbage collector, which gives support to non-daemon threads e.g, main thread. Example Scenario: Whenever the executing program (main thread) gets memory issues, garbage collector (daemon thread) gives support to free up the resources. By default, Main thread is a non-daemon thread. For all other threads, other than main thread are daemon/non-daemon by default, based on their parent nature. The child thread's daemon/non-daemon nature is inherited from the parent thread. It is possible to make any thread daemon/non-daemon using setDaemon(True/False) method. But, once a thread is started, is not not possible to change it's daemon nature. The biggest advantage of Daemon threads is, when the last non-daemon thread terminates, automatically, all the daemon threads will also terminate. We need not need to manually terminate it e.g, In a  car race game, allt eh surroundings such as Sceneries,streetlights, roads, obstacles needs to eb showsn only till the last car is present in the race. After tha last car (non-daemon/main thread) completes the race, there is no need to show all teh surrroundings,sceneries will automatically closes (daemon threads). SO,all teh main jobs need to be done by non-daemon threads, and supporting jobs needs to be done by daemon threads.")
+t = current_thread()
+print("Do the main thread is daemon?", t.isDaemon())
+print("Do the main thread is daemon?", t.daemon)
+
+try:
+    t.setDaemon(True)
+except Exception as e:
+    print(f"Error is {e}. It is not possible to modify daemon nature of a thread, after it is started. So, only we can modify the daemon nature ofa ll other threads, but when it comes to Main thread, it's starting is not in out hand, it's already started. So, we cannot modify or make the main thread daemon")
+
+time.sleep(5)
+
+def obstacles():
+    for _ in range(100):
+        print("Obstacles are showing in the surroundings...")
+
+def surroundings():
+    for _ in range(100):
+        print("Sceneries, roads, traffic signals are showing in the surroundings...")
+
+def race(cars):
+    for i in cars:
+        print(f"{i}th Car completed the race out of the 5 cars")
+
+s1 = Thread(target = race,args = ([1,2,3,4,5],))
+s2 = Thread(target = obstacles)
+s3 = Thread(target = surroundings)
+s2.daemon = True
+s3.daemon = True
+print("Daemon Status of Race Cars is: ",s1.daemon)
+print("Daemon Status of obstacles is: ",s2.daemon)
+print("Daemon Status of surroundings is: ",s3.daemon)
+print("you can observe,as soon as i start all these threads to execute in the car game, all the supporting function threads like obstacles adn usrrounding objects will be executed till the car is still present in teh race, after all cars finishes the race, all the supporitng functions will automatically terminates, before comeplteing their total execution iterations, since they are daemon threads, and they can exist only if a non-daemon exists. As last non-daemon thread i.e s1 terminates(5th car completes the race), supproting daemon threads will also terminate automatically.")
+s1.start()
+s2.start()
+s3.start()
+
+
+
+
+
+
+
+
+
+
+
